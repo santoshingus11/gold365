@@ -159,7 +159,12 @@
 
                         <div class="ps ">
             <div class="sidebar-right-inner ">
-
+            <?php if (!empty($game_single['channel_id'])) { ?>
+                                <div class="betting-table lay-bt" style="position: relative;">
+                                    <p class="mrkname" id="liveMatchLink"> Live Match </p>
+                                </div>
+                                <div id="liveTvMatch"><iframe src="{{$game_single['channel_id'] ?? ''}}" height="200" width="300" title="Iframe Example"></iframe></div>
+                            <?php } ?>
             @if(Session::has('message'))
                 <p class="alert alert-success"><strong>{{Session::get('message')}}</strong></p>
             @endif
