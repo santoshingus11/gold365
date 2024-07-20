@@ -26,7 +26,7 @@
           <div class="col-md-3 col-xl-3 mx-auto">
             <div class="card login-bg">
               <div class="auth-form-wrapper px-5 py-5">
-                <a href="" class="noble-ui-logo logo-light d-block mb-2"><img src="{{asset('admin/assets/img/logo.png')}}" style="height: 55px;"></a>
+                <a href="" class="noble-ui-logo logo-light d-block mb-2"><img src="{{asset('admin/assets/img/logo.png')}}" style="height: 75px;"></a>
                 <form class="forms-sample" id="loginForm">
                   @csrf
                   <div class="flash__wrapper">

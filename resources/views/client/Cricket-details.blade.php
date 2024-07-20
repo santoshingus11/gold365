@@ -48,7 +48,7 @@
                         @include('layouts.client-navbar')
 
                         <router-outlet></router-outlet>
-                        <app-sport-detail><!---->
+                        <app-sport-detail>
                             <app-d-sport-detail>
                                 <div class="row row5 mt-2">
                                     <?php
@@ -60,14 +60,14 @@
                                         echo ' <div class="col-md-9 featured-box-detail sports-wrapper m-b-10">';
                                     }
                                     ?>
-                                    <div>
-                                        <div class="game-heading"><span class="card-header-title">{{$game_single['game_title']}}</span><span class="float-right"><!----><span>{{date('d/m/Y H:i:s A',strtotime($game_single['created_at']))}}</span><!----></span></div><!---->
+                                    <!-- <div>
+                                        <div class="game-heading"><span class="card-header-title">{{$game_single['game_title']}}</span><span class="float-right"><span>{{date('d/m/Y H:i:s A',strtotime($game_single['created_at']))}}</span></span></div>
 
                                         <div class="sr-widget-1 scoreCard_game mt-1"></div>
                                         <div class="markets">
                                             <div class="main-market"><app-market-detail _nghost-sxb-c101="">
                                                     <div>
-                                                        <div class="market-title mt-1"> Match Odds <!----><a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
+                                                        <div class="market-title mt-1"> Match Odds <a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
                                                         <div class="table-header">
                                                             <div class="float-left country-name box-4 text-info"><b>Min: <span>-</span> Max: <span>1</span></b></div>
                                                             <div class="box-1 float-left"></div>
@@ -79,50 +79,27 @@
                                                         </div>
                                                         <div class="table-body">
 
-                                                            @foreach($response['match_odds'] as $r)
-                                                            <div class="table-row " data-title="">
-                                                                <div class="float-left country-name box-4"><span class="team-name"><b class="team_name">{{$r['team_name']}}</b></span>
-                                                                    <p><!----><!----></p>
-                                                                </div>
-                                                                <div class="back-2 back2 box-1 float-left text-center"><span class="odd d-block">1.25</span><span class="d-block">4.74</span></div>
-                                                                <div class="back-1 back1 box-1 float-left text-center"><span class="odd d-block">1.28</span><span class="d-block">4.23</span></div>
-
-                                                                @if($r['back_status']==1)
-                                                                <div class="back box-1 float-left lock text-center"><span class="odd d-block bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</span><span class="d-block">3.95</span></div>
-                                                                @else
-                                                                <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                @if($r['lay_status']==1)
-                                                                <div class="box-1 float-left lay text-center"><span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</span><span class="d-block bet_text">32.22</span></div>
-                                                                @else
-                                                                <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                <div class="box-1 float-left lay1 text-center"><span class="odd d-block">1.68</span><span class="d-block">5.41</span></div>
-                                                                <div class="box-1 float-left lay2 text-center"><span class="odd d-block">2.1</span><span class="d-block">9.48</span></div>
-                                                            </div>
-                                                            @endforeach
+                                                           <div id="match_odds"></div>
 
                                                         </div>
-                                                        
-                                                    </div><!----><!---->
-                                                </app-market-detail></div><!----><!---->
+
+                                                    </div>
+                                                </app-market-detail></div>
                                         </div>
-                                        <div class="fancy-market row row5"><!----></div><!---->
+                                        <div class="fancy-market row row5"></div>
 
                                         <div>
-                                            <div class="markets"><!----></div><!---->
-                                        </div><!---->
-                                    </div><!----><!---->
+                                            <div class="markets"></div>
+                                        </div>
+                                    </div> -->
                                     <div>
-                                      
+                                        <div class="game-heading"><span class="card-header-title">{{$game_single['game_title']}}</span><span class="float-right"><span>{{date('d/m/Y H:i:s A',strtotime($game_single['created_at']))}}</span></span></div>
                                         <div class="sr-widget-1 scoreCard_game mt-1"></div>
                                         <div class="markets">
                                             <div class="main-market">
                                                 <app-market-detail _nghost-sxb-c101="">
                                                     <div>
-                                                        <div class="market-title mt-1"> Match Odds <!----><a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
+                                                        <div class="market-title mt-1"> Match Odds <a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
                                                         <div class="table-header">
                                                             <div class="float-left country-name box-4 text-info"><b>Min: <span>-</span> Max: <span>1</span></b></div>
                                                             <div class="box-1 float-left"></div>
@@ -134,36 +111,13 @@
                                                         </div>
                                                         <div class="table-body">
 
-                                                            @foreach($response['match_odds'] as $r)
-                                                            <div class="table-row " data-title="">
-                                                                <div class="float-left country-name box-4"><span class="team-name"><b class="team_name">{{$r['team_name']}}</b></span>
-                                                                    <p><!----><!----></p>
-                                                                </div>
-                                                                <div class="back-2 back2 box-1 float-left text-center"><span class="odd d-block">1.25</span><span class="d-block">4.74</span></div>
-                                                                <div class="back-1 back1 box-1 float-left text-center"><span class="odd d-block">1.28</span><span class="d-block">4.23</span></div>
-
-                                                                @if($r['back_status']==1)
-                                                                <div class="back box-1 float-left lock text-center"><span class="odd d-block bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</span><span class="d-block">3.95</span></div>
-                                                                @else
-                                                                <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                @if($r['lay_status']==1)
-                                                                <div class="box-1 float-left lay text-center"><span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</span><span class="d-block bet_text">32.22</span></div>
-                                                                @else
-                                                                <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                <div class="box-1 float-left lay1 text-center"><span class="odd d-block">1.68</span><span class="d-block">5.41</span></div>
-                                                                <div class="box-1 float-left lay2 text-center"><span class="odd d-block">2.1</span><span class="d-block">9.48</span></div>
-                                                            </div>
-                                                            @endforeach
+                                                            <div id="match_odds"></div>
 
                                                         </div>
-                                                       
-                                                    </div><!----><!---->
+
+                                                    </div>
                                                     <div>
-                                                        <div class="market-title mt-1"> BOOKMAKER <!----><a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
+                                                        <div class="market-title mt-1"> BOOKMAKER <a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
                                                         <div class="table-header">
                                                             <div class="float-left country-name box-4 text-info"><b>Min: <span>-</span> Max: <span>1</span></b></div>
                                                             <div class="box-1 float-left"></div>
@@ -175,36 +129,13 @@
                                                         </div>
                                                         <div class="table-body">
 
-                                                            @foreach($response['bookmaker'] as $r)
-                                                            <div class="table-row " data-title="">
-                                                                <div class="float-left country-name box-4"><span class="team-name"><b class="team_name">{{$r['team_name']}}</b></span>
-                                                                    <p><!----><!----></p>
-                                                                </div>
-                                                                <div class="back-2 back2 box-1 float-left text-center"><span class="odd d-block">1.25</span><span class="d-block">4.74</span></div>
-                                                                <div class="back-1 back1 box-1 float-left text-center"><span class="odd d-block">1.28</span><span class="d-block">4.23</span></div>
-
-                                                                @if($r['back_status']==1)
-                                                                <div class="back box-1 float-left lock text-center"><span class="odd d-block bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</span><span class="d-block">3.95</span></div>
-                                                                @else
-                                                                <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                @if($r['lay_status']==1)
-                                                                <div class="box-1 float-left lay text-center"><span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</span><span class="d-block bet_text">32.22</span></div>
-                                                                @else
-                                                                <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                <div class="box-1 float-left lay1 text-center"><span class="odd d-block">1.68</span><span class="d-block">5.41</span></div>
-                                                                <div class="box-1 float-left lay2 text-center"><span class="odd d-block">2.1</span><span class="d-block">9.48</span></div>
-                                                            </div>
-                                                            @endforeach
+                                                        <div id="bookmaker"></div>
 
                                                         </div>
-                                                       
-                                                    </div><!----><!---->
+
+                                                    </div>
                                                     <div>
-                                                        <div class="market-title mt-1"> To Win The Toss <!----><a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
+                                                        <div class="market-title mt-1"> To Win The Toss <a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
                                                         <div class="table-header">
                                                             <div class="float-left country-name box-4 text-info"><b>Min: <span>-</span> Max: <span>1</span></b></div>
                                                             <div class="box-1 float-left"></div>
@@ -216,36 +147,13 @@
                                                         </div>
                                                         <div class="table-body">
 
-                                                            @foreach($response['to_win_the_toss'] as $r)
-                                                            <div class="table-row " data-title="">
-                                                                <div class="float-left country-name box-4"><span class="team-name"><b class="team_name">{{$r['team_name']}}</b></span>
-                                                                    <p><!----><!----></p>
-                                                                </div>
-                                                                <div class="back-2 back2 box-1 float-left text-center"><span class="odd d-block">1.25</span><span class="d-block">4.74</span></div>
-                                                                <div class="back-1 back1 box-1 float-left text-center"><span class="odd d-block">1.28</span><span class="d-block">4.23</span></div>
-
-                                                                @if($r['back_status']==1)
-                                                                <div class="back box-1 float-left lock text-center"><span class="odd d-block bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</span><span class="d-block">3.95</span></div>
-                                                                @else
-                                                                <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                @if($r['lay_status']==1)
-                                                                <div class="box-1 float-left lay text-center"><span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</span><span class="d-block bet_text">32.22</span></div>
-                                                                @else
-                                                                <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                <div class="box-1 float-left lay1 text-center"><span class="odd d-block">1.68</span><span class="d-block">5.41</span></div>
-                                                                <div class="box-1 float-left lay2 text-center"><span class="odd d-block">2.1</span><span class="d-block">9.48</span></div>
-                                                            </div>
-                                                            @endforeach
+                                                        <div id="to_win_the_toss"></div>
 
                                                         </div>
-                                                       
-                                                    </div><!----><!---->
+
+                                                    </div>
                                                     <div>
-                                                        <div class="market-title mt-1"> Fancy <!----><a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
+                                                        <div class="market-title mt-1"> Fancy <a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
                                                         <div class="table-header">
                                                             <div class="float-left country-name box-4 text-info"><b>Min: <span>-</span> Max: <span>1</span></b></div>
                                                             <div class="box-1 float-left"></div>
@@ -257,36 +165,13 @@
                                                         </div>
                                                         <div class="table-body">
 
-                                                            @foreach($response['fancy'] as $r)
-                                                            <div class="table-row " data-title="">
-                                                                <div class="float-left country-name box-4"><span class="team-name"><b class="team_name">{{$r['team_name']}}</b></span>
-                                                                    <p><!----><!----></p>
-                                                                </div>
-                                                                <div class="back-2 back2 box-1 float-left text-center"><span class="odd d-block">1.25</span><span class="d-block">4.74</span></div>
-                                                                <div class="back-1 back1 box-1 float-left text-center"><span class="odd d-block">1.28</span><span class="d-block">4.23</span></div>
-
-                                                                @if($r['back_status']==1)
-                                                                <div class="back box-1 float-left lock text-center"><span class="odd d-block bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</span><span class="d-block">3.95</span></div>
-                                                                @else
-                                                                <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                @if($r['lay_status']==1)
-                                                                <div class="box-1 float-left lay text-center"><span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</span><span class="d-block bet_text">32.22</span></div>
-                                                                @else
-                                                                <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                <div class="box-1 float-left lay1 text-center"><span class="odd d-block">1.68</span><span class="d-block">5.41</span></div>
-                                                                <div class="box-1 float-left lay2 text-center"><span class="odd d-block">2.1</span><span class="d-block">9.48</span></div>
-                                                            </div>
-                                                            @endforeach
+                                                        <div id="fancy"></div>
 
                                                         </div>
-                                                       
-                                                    </div><!----><!---->
+
+                                                    </div>
                                                     <div>
-                                                        <div class="market-title mt-1"> Run Bhav <!----><a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
+                                                        <div class="market-title mt-1"> Run Bhav <a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
                                                         <div class="table-header">
                                                             <div class="float-left country-name box-4 text-info"><b>Min: <span>-</span> Max: <span>1</span></b></div>
                                                             <div class="box-1 float-left"></div>
@@ -298,36 +183,13 @@
                                                         </div>
                                                         <div class="table-body">
 
-                                                            @foreach($response['run_bhav'] as $r)
-                                                            <div class="table-row " data-title="">
-                                                                <div class="float-left country-name box-4"><span class="team-name"><b class="team_name">{{$r['team_name']}}</b></span>
-                                                                    <p><!----><!----></p>
-                                                                </div>
-                                                                <div class="back-2 back2 box-1 float-left text-center"><span class="odd d-block">1.25</span><span class="d-block">4.74</span></div>
-                                                                <div class="back-1 back1 box-1 float-left text-center"><span class="odd d-block">1.28</span><span class="d-block">4.23</span></div>
-
-                                                                @if($r['back_status']==1)
-                                                                <div class="back box-1 float-left lock text-center"><span class="odd d-block bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</span><span class="d-block">3.95</span></div>
-                                                                @else
-                                                                <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                @if($r['lay_status']==1)
-                                                                <div class="box-1 float-left lay text-center"><span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</span><span class="d-block bet_text">32.22</span></div>
-                                                                @else
-                                                                <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                <div class="box-1 float-left lay1 text-center"><span class="odd d-block">1.68</span><span class="d-block">5.41</span></div>
-                                                                <div class="box-1 float-left lay2 text-center"><span class="odd d-block">2.1</span><span class="d-block">9.48</span></div>
-                                                            </div>
-                                                            @endforeach
+                                                        <div id="run_bhav"></div>
 
                                                         </div>
-                                                       
-                                                    </div><!----><!---->
+
+                                                    </div>
                                                     <div>
-                                                        <div class="market-title mt-1"> Over by Over Session Market <!----><a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
+                                                        <div class="market-title mt-1"> Over by Over Session Market <a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
                                                         <div class="table-header">
                                                             <div class="float-left country-name box-4 text-info"><b>Min: <span>-</span> Max: <span>1</span></b></div>
                                                             <div class="box-1 float-left"></div>
@@ -339,36 +201,13 @@
                                                         </div>
                                                         <div class="table-body">
 
-                                                            @foreach($response['over_by_over_session_market'] as $r)
-                                                            <div class="table-row " data-title="">
-                                                                <div class="float-left country-name box-4"><span class="team-name"><b class="team_name">{{$r['team_name']}}</b></span>
-                                                                    <p><!----><!----></p>
-                                                                </div>
-                                                                <div class="back-2 back2 box-1 float-left text-center"><span class="odd d-block">1.25</span><span class="d-block">4.74</span></div>
-                                                                <div class="back-1 back1 box-1 float-left text-center"><span class="odd d-block">1.28</span><span class="d-block">4.23</span></div>
-
-                                                                @if($r['back_status']==1)
-                                                                <div class="back box-1 float-left lock text-center"><span class="odd d-block bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</span><span class="d-block">3.95</span></div>
-                                                                @else
-                                                                <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                @if($r['lay_status']==1)
-                                                                <div class="box-1 float-left lay text-center"><span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</span><span class="d-block bet_text">32.22</span></div>
-                                                                @else
-                                                                <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                <div class="box-1 float-left lay1 text-center"><span class="odd d-block">1.68</span><span class="d-block">5.41</span></div>
-                                                                <div class="box-1 float-left lay2 text-center"><span class="odd d-block">2.1</span><span class="d-block">9.48</span></div>
-                                                            </div>
-                                                            @endforeach
+                                                        <div id="over_by_over_session_market"></div>
 
                                                         </div>
-                                                       
-                                                    </div><!----><!---->
+
+                                                    </div>
                                                     <div>
-                                                        <div class="market-title mt-1"> Ball by Ball Session Market <!----><a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
+                                                        <div class="market-title mt-1"> Ball by Ball Session Market <a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
                                                         <div class="table-header">
                                                             <div class="float-left country-name box-4 text-info"><b>Min: <span>-</span> Max: <span>1</span></b></div>
                                                             <div class="box-1 float-left"></div>
@@ -380,36 +219,13 @@
                                                         </div>
                                                         <div class="table-body">
 
-                                                            @foreach($response['ball_by_ball_session_market'] as $r)
-                                                            <div class="table-row " data-title="">
-                                                                <div class="float-left country-name box-4"><span class="team-name"><b class="team_name">{{$r['team_name']}}</b></span>
-                                                                    <p><!----><!----></p>
-                                                                </div>
-                                                                <div class="back-2 back2 box-1 float-left text-center"><span class="odd d-block">1.25</span><span class="d-block">4.74</span></div>
-                                                                <div class="back-1 back1 box-1 float-left text-center"><span class="odd d-block">1.28</span><span class="d-block">4.23</span></div>
-
-                                                                @if($r['back_status']==1)
-                                                                <div class="back box-1 float-left lock text-center"><span class="odd d-block bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</span><span class="d-block">3.95</span></div>
-                                                                @else
-                                                                <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                @if($r['lay_status']==1)
-                                                                <div class="box-1 float-left lay text-center"><span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</span><span class="d-block bet_text">32.22</span></div>
-                                                                @else
-                                                                <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                <div class="box-1 float-left lay1 text-center"><span class="odd d-block">1.68</span><span class="d-block">5.41</span></div>
-                                                                <div class="box-1 float-left lay2 text-center"><span class="odd d-block">2.1</span><span class="d-block">9.48</span></div>
-                                                            </div>
-                                                            @endforeach
+                                                        <div id="ball_by_ball_session_market"></div>
 
                                                         </div>
-                                                       
-                                                    </div><!----><!---->
+
+                                                    </div>
                                                     <div>
-                                                        <div class="market-title mt-1"> Tied Match <!----><a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
+                                                        <div class="market-title mt-1"> Tied Match <a href="javascript:void(0)" class="m-r-5 game-rules-icon"><span><i class="fa fa-info-circle float-right"></i></span></a></div>
                                                         <div class="table-header">
                                                             <div class="float-left country-name box-4 text-info"><b>Min: <span>-</span> Max: <span>1</span></b></div>
                                                             <div class="box-1 float-left"></div>
@@ -421,45 +237,22 @@
                                                         </div>
                                                         <div class="table-body">
 
-                                                            @foreach($response['tied_match'] as $r)
-                                                            <div class="table-row " data-title="">
-                                                                <div class="float-left country-name box-4"><span class="team-name"><b class="team_name">{{$r['team_name']}}</b></span>
-                                                                    <p><!----><!----></p>
-                                                                </div>
-                                                                <div class="back-2 back2 box-1 float-left text-center"><span class="odd d-block">1.25</span><span class="d-block">4.74</span></div>
-                                                                <div class="back-1 back1 box-1 float-left text-center"><span class="odd d-block">1.28</span><span class="d-block">4.23</span></div>
-
-                                                                @if($r['back_status']==1)
-                                                                <div class="back box-1 float-left lock text-center"><span class="odd d-block bet_text" data-back-lay="back" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</span><span class="d-block">3.95</span></div>
-                                                                @else
-                                                                <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                @if($r['lay_status']==1)
-                                                                <div class="box-1 float-left lay text-center"><span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="{{$r['stake']}}" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</span><span class="d-block bet_text">32.22</span></div>
-                                                                @else
-                                                                <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
-                                                                @endif
-
-                                                                <div class="box-1 float-left lay1 text-center"><span class="odd d-block">1.68</span><span class="d-block">5.41</span></div>
-                                                                <div class="box-1 float-left lay2 text-center"><span class="odd d-block">2.1</span><span class="d-block">9.48</span></div>
-                                                            </div>
-                                                            @endforeach
+                                                        <div id="tied_match"></div>
 
                                                         </div>
                                                         <div class="table-remark text-right remark">
                                                             <marquee>GOOD NEWS PREMIUM MARKET'S ARE NOW AVAILABLE IN OUR EXCHANGE (P)</marquee>
-                                                        </div><!----><!---->
-                                                    </div><!----><!---->
+                                                        </div>
+                                                    </div>
                                                 </app-market-detail>
-                                            </div><!----><!---->
+                                            </div>
                                         </div>
-                                        <div class="fancy-market row row5"><!----></div><!---->
+                                        <div class="fancy-market row row5"></div>
 
                                         <div>
-                                            <div class="markets"><!----></div><!---->
-                                        </div><!---->
-                                    </div><!----><!---->
+                                            <div class="markets"></div>
+                                        </div>
+                                    </div>
 
                                 </div>
                                 <?php
@@ -474,12 +267,12 @@
 
                                 <div class="ps ">
                                     <div class="sidebar-right-inner ">
-                                    <?php if (!empty($game_single['channel_id'])) { ?>
-                                <div class="betting-table lay-bt" style="position: relative;">
-                                    <p class="mrkname" id="liveMatchLink"> Live Match </p>
-                                </div>
-                                <div id="liveTvMatch"><iframe src="{{$game_single['channel_id'] ?? ''}}" height="200" width="300" title="Iframe Example"></iframe></div>
-                            <?php } ?>
+                                        <?php if (!empty($game_single['channel_id'])) { ?>
+                                            <div class="betting-table lay-bt" style="position: relative;">
+                                                <p class="mrkname" id="liveMatchLink"> Live Match </p>
+                                            </div>
+                                            <div id="liveTvMatch"><iframe src="{{$game_single['channel_id'] ?? ''}}" height="200" width="300" title="Iframe Example"></iframe></div>
+                                        <?php } ?>
                                         @if(Session::has('message'))
                                         <p class="alert alert-success"><strong>{{Session::get('message')}}</strong></p>
                                         @endif
@@ -550,8 +343,8 @@
                                                                 <button type="button" class="btn btn-sm btn-danger float-left  cancel-btn" id="reset_btn"> Reset </button>
                                                                 <button class="btn btn-sm btn-success float-right m-b-5 betplace-btn" disabled=""> Submit </button>
                                                             </div>
-                                                        </form><!---->
-                                                    </div><!---->
+                                                        </form>
+                                                    </div>
                                                 </app-d-bet-slip></div>
                                         </div>
                                         <div class="card m-b-10 my-bet">
@@ -567,7 +360,7 @@
                                                                 <th class="text-right"> Odds </th>
                                                                 <th class="text-center"> Stake </th>
                                                             </tr>
-                                                        </thead><!---->
+                                                        </thead>
 
                                                         <tbody class="my-bet-table">
                                                             @if(!empty(Session::get('myBets')))
@@ -584,10 +377,10 @@
                                                             </tr>
                                                             @endif
 
-                                                        </tbody><!---->
+                                                        </tbody>
 
                                                     </table>
-                                                </app-d-bet-list><!---->
+                                                </app-d-bet-list>
                                             </div>
                                         </div>
                                     </div>
@@ -600,7 +393,7 @@
                                 </div>
                     </div>
                 </div>
-                </app-d-sport-detail><!----></app-sport-detail><!---->
+                </app-d-sport-detail></app-sport-detail>
 
             </div>
         </div>
@@ -614,25 +407,14 @@
         @if(empty(Session::get('myBets')))
         $(".show_bet").hide();
         @endif
-        $(".bet_text").click(function() {
+        $(document).on('click', '.bet_text', function() {
             $(".show_bet").show();
-
-            // $elem = $(this).parent("div");
             $elem = $(this).parents('.table-row').first();
-
-            // $elem.parents('.event-names').length // id = $div.attr("id");
-
             text = $elem.find(".team_name").text();
-
             $('#back_lay').val($(this).data("back-lay"));
             $('#match_id').val($(this).data("match-id"));
             $('#bet_input_stake').val($(this).data("match-stake"));
             $('#bet_team_name').val($(this).data("team-name"));
-
-
-            console.log($(this).data("match-id"));
-
-            // alert( text  );
             $('.bat_team_place').text(text);
             $("#bet_input").val($(this).text());
         });
@@ -677,7 +459,7 @@
     </script>
 
 </section>
-<script>
+<!-- <script>
     var cricketId = @json($game_single['id']);
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -729,6 +511,469 @@
 
         // Initial call to display the scorecard immediately on page load
         updateScorecard();
+    });
+</script> -->
+
+<script>
+    $(document).ready(function() {
+        function loadCricketDetails() {
+            var game_id = "{{ $game_id }}"; // Replace with your actual game ID or pass it dynamically
+
+            $.ajax({
+                url: game_id, // Update with your actual route
+                method: 'GET',
+                success: function(data) {
+                    console.log(data);
+
+
+
+                    var match_odds = '';
+                    $.each(data.response.match_odds, function(index, r) {
+                        //matchOddsHtml
+                        match_odds += `
+        <div class="table-row" data-title="">
+          <div class="float-left country-name box-4">
+            <span class="team-name"><b class="team_name">${r.team_name}</b></span>
+            <p></p>
+          </div>
+          <div class="back-2 back2 box-1 float-left text-center">
+            <span class="odd d-block">1.25</span>
+            <span class="d-block">4.74</span>
+          </div>
+          <div class="back-1 back1 box-1 float-left text-center">
+            <span class="odd d-block">1.28</span>
+            <span class="d-block">4.23</span>
+          </div>
+          ${r.back_status == 1 ? `
+            <div class="back box-1 float-left lock text-center">
+              <span class="odd d-block bet_text" data-back-lay="back" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.back_value}</span>
+              <span class="d-block">3.95</span>
+            </div>
+          ` : `
+            <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
+          `}
+          ${r.lay_status == 1 ? `
+            <div class="box-1 float-left lay text-center">
+              <span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.lay_value}</span>
+              <span class="d-block bet_text">32.22</span>
+            </div>
+          ` : `
+            <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
+          `}
+          <div class="box-1 float-left lay1 text-center">
+            <span class="odd d-block">1.68</span>
+            <span class="d-block">5.41</span>
+          </div>
+          <div class="box-1 float-left lay2 text-center">
+            <span class="odd d-block">2.1</span>
+            <span class="d-block">9.48</span>
+          </div>
+        </div>
+      `;
+                    });
+                    // $('#matchoddclass').empty(); // Update with your actual container class
+                    $('#match_odds').html(match_odds); // Update with your actual container class
+
+
+
+
+                    var bookmaker = '';
+                    $.each(data.response.bookmaker, function(index, r) {
+                        //matchOddsHtml
+                        bookmaker += `
+        <div class="table-row" data-title="">
+          <div class="float-left country-name box-4">
+            <span class="team-name"><b class="team_name">${r.team_name}</b></span>
+            <p></p>
+          </div>
+          <div class="back-2 back2 box-1 float-left text-center">
+            <span class="odd d-block">1.25</span>
+            <span class="d-block">4.74</span>
+          </div>
+          <div class="back-1 back1 box-1 float-left text-center">
+            <span class="odd d-block">1.28</span>
+            <span class="d-block">4.23</span>
+          </div>
+          ${r.back_status == 1 ? `
+            <div class="back box-1 float-left lock text-center">
+              <span class="odd d-block bet_text" data-back-lay="back" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.back_value}</span>
+              <span class="d-block">3.95</span>
+            </div>
+          ` : `
+            <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
+          `}
+          ${r.lay_status == 1 ? `
+            <div class="box-1 float-left lay text-center">
+              <span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.lay_value}</span>
+              <span class="d-block bet_text">32.22</span>
+            </div>
+          ` : `
+            <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
+          `}
+          <div class="box-1 float-left lay1 text-center">
+            <span class="odd d-block">1.68</span>
+            <span class="d-block">5.41</span>
+          </div>
+          <div class="box-1 float-left lay2 text-center">
+            <span class="odd d-block">2.1</span>
+            <span class="d-block">9.48</span>
+          </div>
+        </div>
+      `;
+                    });
+                    $('#bookmaker').html(bookmaker); // Update with your actual container class
+
+
+
+
+                    var fancy = '';
+                    $.each(data.response.fancy, function(index, r) {
+                        //matchOddsHtml
+                        fancy += `
+        <div class="table-row" data-title="">
+          <div class="float-left country-name box-4">
+            <span class="team-name"><b class="team_name">${r.team_name}</b></span>
+            <p></p>
+          </div>
+          <div class="back-2 back2 box-1 float-left text-center">
+            <span class="odd d-block">1.25</span>
+            <span class="d-block">4.74</span>
+          </div>
+          <div class="back-1 back1 box-1 float-left text-center">
+            <span class="odd d-block">1.28</span>
+            <span class="d-block">4.23</span>
+          </div>
+          ${r.back_status == 1 ? `
+            <div class="back box-1 float-left lock text-center">
+              <span class="odd d-block bet_text" data-back-lay="back" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.back_value}</span>
+              <span class="d-block">3.95</span>
+            </div>
+          ` : `
+            <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
+          `}
+          ${r.lay_status == 1 ? `
+            <div class="box-1 float-left lay text-center">
+              <span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.lay_value}</span>
+              <span class="d-block bet_text">32.22</span>
+            </div>
+          ` : `
+            <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
+          `}
+          <div class="box-1 float-left lay1 text-center">
+            <span class="odd d-block">1.68</span>
+            <span class="d-block">5.41</span>
+          </div>
+          <div class="box-1 float-left lay2 text-center">
+            <span class="odd d-block">2.1</span>
+            <span class="d-block">9.48</span>
+          </div>
+        </div>
+      `;
+                    });
+                    $('#fancy').html(fancy); // Update with your actual container class
+
+
+
+
+                    var ball_by_ball_session_market = '';
+                    $.each(data.response.ball_by_ball_session_market, function(index, r) {
+                        //matchOddsHtml
+                        ball_by_ball_session_market += `
+        <div class="table-row" data-title="">
+          <div class="float-left country-name box-4">
+            <span class="team-name"><b class="team_name">${r.team_name}</b></span>
+            <p></p>
+          </div>
+          <div class="back-2 back2 box-1 float-left text-center">
+            <span class="odd d-block">1.25</span>
+            <span class="d-block">4.74</span>
+          </div>
+          <div class="back-1 back1 box-1 float-left text-center">
+            <span class="odd d-block">1.28</span>
+            <span class="d-block">4.23</span>
+          </div>
+          ${r.back_status == 1 ? `
+            <div class="back box-1 float-left lock text-center">
+              <span class="odd d-block bet_text" data-back-lay="back" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.back_value}</span>
+              <span class="d-block">3.95</span>
+            </div>
+          ` : `
+            <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
+          `}
+          ${r.lay_status == 1 ? `
+            <div class="box-1 float-left lay text-center">
+              <span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.lay_value}</span>
+              <span class="d-block bet_text">32.22</span>
+            </div>
+          ` : `
+            <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
+          `}
+          <div class="box-1 float-left lay1 text-center">
+            <span class="odd d-block">1.68</span>
+            <span class="d-block">5.41</span>
+          </div>
+          <div class="box-1 float-left lay2 text-center">
+            <span class="odd d-block">2.1</span>
+            <span class="d-block">9.48</span>
+          </div>
+        </div>
+      `;
+                    });
+                    $('#ball_by_ball_session_market').html(ball_by_ball_session_market); // Update with your actual container class
+
+
+
+
+                    var over_by_over_session_market = '';
+                    $.each(data.response.over_by_over_session_market, function(index, r) {
+                        //matchOddsHtml
+                        over_by_over_session_market += `
+        <div class="table-row" data-title="">
+          <div class="float-left country-name box-4">
+            <span class="team-name"><b class="team_name">${r.team_name}</b></span>
+            <p></p>
+          </div>
+          <div class="back-2 back2 box-1 float-left text-center">
+            <span class="odd d-block">1.25</span>
+            <span class="d-block">4.74</span>
+          </div>
+          <div class="back-1 back1 box-1 float-left text-center">
+            <span class="odd d-block">1.28</span>
+            <span class="d-block">4.23</span>
+          </div>
+          ${r.back_status == 1 ? `
+            <div class="back box-1 float-left lock text-center">
+              <span class="odd d-block bet_text" data-back-lay="back" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.back_value}</span>
+              <span class="d-block">3.95</span>
+            </div>
+          ` : `
+            <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
+          `}
+          ${r.lay_status == 1 ? `
+            <div class="box-1 float-left lay text-center">
+              <span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.lay_value}</span>
+              <span class="d-block bet_text">32.22</span>
+            </div>
+          ` : `
+            <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
+          `}
+          <div class="box-1 float-left lay1 text-center">
+            <span class="odd d-block">1.68</span>
+            <span class="d-block">5.41</span>
+          </div>
+          <div class="box-1 float-left lay2 text-center">
+            <span class="odd d-block">2.1</span>
+            <span class="d-block">9.48</span>
+          </div>
+        </div>
+      `;
+                    });
+                    $('#over_by_over_session_market').html(over_by_over_session_market); // Update with your actual container class
+
+
+
+                    var run_bhav = '';
+                    $.each(data.response.run_bhav, function(index, r) {
+                        //matchOddsHtml
+                        run_bhav += `
+        <div class="table-row" data-title="">
+          <div class="float-left country-name box-4">
+            <span class="team-name"><b class="team_name">${r.team_name}</b></span>
+            <p></p>
+          </div>
+          <div class="back-2 back2 box-1 float-left text-center">
+            <span class="odd d-block">1.25</span>
+            <span class="d-block">4.74</span>
+          </div>
+          <div class="back-1 back1 box-1 float-left text-center">
+            <span class="odd d-block">1.28</span>
+            <span class="d-block">4.23</span>
+          </div>
+          ${r.back_status == 1 ? `
+            <div class="back box-1 float-left lock text-center">
+              <span class="odd d-block bet_text" data-back-lay="back" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.back_value}</span>
+              <span class="d-block">3.95</span>
+            </div>
+          ` : `
+            <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
+          `}
+          ${r.lay_status == 1 ? `
+            <div class="box-1 float-left lay text-center">
+              <span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.lay_value}</span>
+              <span class="d-block bet_text">32.22</span>
+            </div>
+          ` : `
+            <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
+          `}
+          <div class="box-1 float-left lay1 text-center">
+            <span class="odd d-block">1.68</span>
+            <span class="d-block">5.41</span>
+          </div>
+          <div class="box-1 float-left lay2 text-center">
+            <span class="odd d-block">2.1</span>
+            <span class="d-block">9.48</span>
+          </div>
+        </div>
+      `;
+                    });
+                    $('#run_bhav').html(run_bhav); // Update with your actual container class
+
+
+
+                    var scorecard = '';
+                    $.each(data.response.scorecard, function(index, r) {
+                        //scorecard
+                        scorecard += `
+        <div class="table-row" data-title="">
+          <div class="float-left country-name box-4">
+            <span class="team-name"><b class="team_name">${r.team_name}</b></span>
+            <p></p>
+          </div>
+          <div class="back-2 back2 box-1 float-left text-center">
+            <span class="odd d-block">1.25</span>
+            <span class="d-block">4.74</span>
+          </div>
+          <div class="back-1 back1 box-1 float-left text-center">
+            <span class="odd d-block">1.28</span>
+            <span class="d-block">4.23</span>
+          </div>
+          ${r.back_status == 1 ? `
+            <div class="back box-1 float-left lock text-center">
+              <span class="odd d-block bet_text" data-back-lay="back" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.back_value}</span>
+              <span class="d-block">3.95</span>
+            </div>
+          ` : `
+            <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
+          `}
+          ${r.lay_status == 1 ? `
+            <div class="box-1 float-left lay text-center">
+              <span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.lay_value}</span>
+              <span class="d-block bet_text">32.22</span>
+            </div>
+          ` : `
+            <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
+          `}
+          <div class="box-1 float-left lay1 text-center">
+            <span class="odd d-block">1.68</span>
+            <span class="d-block">5.41</span>
+          </div>
+          <div class="box-1 float-left lay2 text-center">
+            <span class="odd d-block">2.1</span>
+            <span class="d-block">9.48</span>
+          </div>
+        </div>
+      `;
+                    });
+                    $('#scorecard').html(scorecard); // Update with your actual container class
+
+
+
+                    var tied_match = '';
+                    $.each(data.response.tied_match, function(index, r) {
+                        //tied_match
+                        tied_match += `
+        <div class="table-row" data-title="">
+          <div class="float-left country-name box-4">
+            <span class="team-name"><b class="team_name">${r.team_name}</b></span>
+            <p></p>
+          </div>
+          <div class="back-2 back2 box-1 float-left text-center">
+            <span class="odd d-block">1.25</span>
+            <span class="d-block">4.74</span>
+          </div>
+          <div class="back-1 back1 box-1 float-left text-center">
+            <span class="odd d-block">1.28</span>
+            <span class="d-block">4.23</span>
+          </div>
+          ${r.back_status == 1 ? `
+            <div class="back box-1 float-left lock text-center">
+              <span class="odd d-block bet_text" data-back-lay="back" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.back_value}</span>
+              <span class="d-block">3.95</span>
+            </div>
+          ` : `
+            <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
+          `}
+          ${r.lay_status == 1 ? `
+            <div class="box-1 float-left lay text-center">
+              <span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.lay_value}</span>
+              <span class="d-block bet_text">32.22</span>
+            </div>
+          ` : `
+            <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
+          `}
+          <div class="box-1 float-left lay1 text-center">
+            <span class="odd d-block">1.68</span>
+            <span class="d-block">5.41</span>
+          </div>
+          <div class="box-1 float-left lay2 text-center">
+            <span class="odd d-block">2.1</span>
+            <span class="d-block">9.48</span>
+          </div>
+        </div>
+      `;
+                    });
+                    $('#tied_match').html(tied_match); // Update with your actual container class
+
+
+
+                    var to_win_the_toss = '';
+                    $.each(data.response.to_win_the_toss, function(index, r) {
+                        //to_win_the_toss
+                        to_win_the_toss += `
+        <div class="table-row" data-title="">
+          <div class="float-left country-name box-4">
+            <span class="team-name"><b class="team_name">${r.team_name}</b></span>
+            <p></p>
+          </div>
+          <div class="back-2 back2 box-1 float-left text-center">
+            <span class="odd d-block">1.25</span>
+            <span class="d-block">4.74</span>
+          </div>
+          <div class="back-1 back1 box-1 float-left text-center">
+            <span class="odd d-block">1.28</span>
+            <span class="d-block">4.23</span>
+          </div>
+          ${r.back_status == 1 ? `
+            <div class="back box-1 float-left lock text-center">
+              <span class="odd d-block bet_text" data-back-lay="back" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.back_value}</span>
+              <span class="d-block">3.95</span>
+            </div>
+          ` : `
+            <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
+          `}
+          ${r.lay_status == 1 ? `
+            <div class="box-1 float-left lay text-center">
+              <span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.lay_value}</span>
+              <span class="d-block bet_text">32.22</span>
+            </div>
+          ` : `
+            <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
+          `}
+          <div class="box-1 float-left lay1 text-center">
+            <span class="odd d-block">1.68</span>
+            <span class="d-block">5.41</span>
+          </div>
+          <div class="box-1 float-left lay2 text-center">
+            <span class="odd d-block">2.1</span>
+            <span class="d-block">9.48</span>
+          </div>
+        </div>
+      `;
+                    });
+                    $('#to_win_the_toss').html(to_win_the_toss); // Update with your actual container class
+
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching cricket details:', error);
+                }
+            });
+        }
+
+        // Load cricket details every 5 seconds
+        setInterval(loadCricketDetails, 5000);
+
+        // // Initial load
+        loadCricketDetails();
     });
 </script>
 @include('layouts.client-footer')

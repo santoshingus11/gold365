@@ -79,30 +79,7 @@
                               </div>
                               <div class="table-body">
                                   
-                                 @foreach($response['match_odds'] as $r)  
-                                <div class="table-row " data-title="">
-                                  <div class="float-left country-name box-4"><span class="team-name"><b class="team_name">{{$r['team_name']}}</b></span>
-                                    <p><!----><!----></p>
-                                  </div>
-                                  <div class="back-2 back2 box-1 float-left text-center"><span class="odd d-block">1.25</span><span class="d-block">4.74</span></div>
-                                  <div class="back-1 back1 box-1 float-left text-center"><span class="odd d-block">1.28</span><span class="d-block">4.23</span></div>
-                                   
-                                   @if($r['back_status']==1)
-                                  <div class="back box-1 float-left lock text-center"><span class="odd d-block bet_text" data-back-lay="back" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['back_value']}}</span><span class="d-block">3.95</span></div>
-                                  @else
-                                  <div class="back box-1 float-left lock text-center" style="background:white !important;" ></div>
-                                  @endif
-                                  
-                                  @if($r['lay_status']==1)
-                                  <div class="box-1 float-left lay text-center"><span class="odd d-block bet_text" data-back-lay="lay" data-match-id="{{$r['id']}}" data-team-name="{{$r['team_name']}}">{{$r['lay_value']}}</span><span class="d-block bet_text">32.22</span></div>
-                                  @else
-                                  <div class="box-1 float-left lay text-center" style="background:white !important;" ></div>
-                                  @endif
-                                  
-                                  <div class="box-1 float-left lay1 text-center"><span class="odd d-block">1.68</span><span class="d-block">5.41</span></div>
-                                  <div class="box-1 float-left lay2 text-center"><span class="odd d-block">2.1</span><span class="d-block">9.48</span></div>
-                                </div>
-                                @endforeach
+                              <div id="match_odds"></div>
                                 
                               </div>
                               <div class="table-remark text-right remark">
@@ -268,7 +245,7 @@
     @if(empty(Session::get('myBets')))
     $(".show_bet").hide();
     @endif
-    $(".bet_text").click(function() {
+    $(document).on('click', '.bet_text', function() {
       $(".show_bet").show();
 
       // $elem = $(this).parent("div");
@@ -328,5 +305,79 @@
   </script>
   
 </section>
+<script>
+    $(document).ready(function() {
+        function loadCricketDetails() {
+            var game_id = "{{ $game_id }}"; // Replace with your actual game ID or pass it dynamically
 
+            $.ajax({
+                url: game_id, // Update with your actual route
+                method: 'GET',
+                success: function(data) {
+                    console.log(data);
+
+
+
+                    var match_odds = '';
+                    $.each(data.response.match_odds, function(index, r) {
+                        //matchOddsHtml
+                        match_odds += `
+        <div class="table-row" data-title="">
+          <div class="float-left country-name box-4">
+            <span class="team-name"><b class="team_name">${r.team_name}</b></span>
+            <p></p>
+          </div>
+          <div class="back-2 back2 box-1 float-left text-center">
+            <span class="odd d-block">1.25</span>
+            <span class="d-block">4.74</span>
+          </div>
+          <div class="back-1 back1 box-1 float-left text-center">
+            <span class="odd d-block">1.28</span>
+            <span class="d-block">4.23</span>
+          </div>
+          ${r.back_status == 1 ? `
+            <div class="back box-1 float-left lock text-center">
+              <span class="odd d-block bet_text" data-back-lay="back" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.back_value}</span>
+              <span class="d-block">3.95</span>
+            </div>
+          ` : `
+            <div class="back box-1 float-left lock text-center" style="background:white !important;"></div>
+          `}
+          ${r.lay_status == 1 ? `
+            <div class="box-1 float-left lay text-center">
+              <span class="odd d-block bet_text" data-back-lay="lay" data-match-stake="${r.stake}" data-match-id="${r.id}" data-team-name="${r.team_name}">${r.lay_value}</span>
+              <span class="d-block bet_text">32.22</span>
+            </div>
+          ` : `
+            <div class="box-1 float-left lay text-center" style="background:white !important;"></div>
+          `}
+          <div class="box-1 float-left lay1 text-center">
+            <span class="odd d-block">1.68</span>
+            <span class="d-block">5.41</span>
+          </div>
+          <div class="box-1 float-left lay2 text-center">
+            <span class="odd d-block">2.1</span>
+            <span class="d-block">9.48</span>
+          </div>
+        </div>
+      `;
+                    });
+                    // $('#matchoddclass').empty(); // Update with your actual container class
+                    $('#match_odds').html(match_odds); // Update with your actual container class
+
+
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching cricket details:', error);
+                }
+            });
+        }
+
+        // Load cricket details every 5 seconds
+        setInterval(loadCricketDetails, 5000);
+
+        // // Initial load
+        loadCricketDetails();
+    });
+</script>
 @include('layouts.client-footer')

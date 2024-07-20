@@ -216,7 +216,7 @@ class HomeController extends Controller
         }
     }
 
-    public function cricket_details($game_id)
+    public function cricket_details(Request $request,$game_id)
     {
 
         //get match list
@@ -251,11 +251,17 @@ class HomeController extends Controller
         $game_single = json_decode($res, true);
 
         curl_close($gm);
-
+        if ($request->ajax()) {
+            return response()->json([
+                'response' => $response,
+                'game_single' => $game_single,
+                'game_id' => $game_id,
+            ]);
+          }
         // if ($game_id == 1) {
         //             return view('client.Cricket-details-ipl', compact('response', 'game_single'));
         //         }
-        return view('client.Cricket-details', compact('response', 'game_single'));
+        return view('client.Cricket-details', compact('response', 'game_single','game_id'));
     }
 
     public function cricket_bet_place(Request $request)
@@ -355,7 +361,7 @@ class HomeController extends Controller
        
     }
 
-    public function football_details($game_id)
+    public function football_details(Request $request, $game_id)
     {
 
         //get match list
@@ -377,8 +383,14 @@ class HomeController extends Controller
         $res = curl_exec($gm);
         $game_single = json_decode($res, true);
         curl_close($gm);
-
-        return view('client.Football-Details', compact('response', 'game_single'));
+        if ($request->ajax()) {
+            return response()->json([
+                'response' => $response,
+                'game_single' => $game_single,
+                'game_id' => $game_id,
+            ]);
+          }
+        return view('client.Football-Details', compact('response', 'game_single','game_id'));
     }
 
     public function football_bet_place(Request $request)
@@ -450,7 +462,7 @@ class HomeController extends Controller
       
     }
 
-    public function tennis_details($game_id)
+    public function tennis_details(Request $request, $game_id)
     {
         //get match list
         $ch = curl_init();
@@ -471,8 +483,14 @@ class HomeController extends Controller
         $res = curl_exec($gm);
         $game_single = json_decode($res, true);
         curl_close($gm);
-
-        return view('client.Tennis-details', compact('response', 'game_single'));
+        if ($request->ajax()) {
+            return response()->json([
+                'response' => $response,
+                'game_single' => $game_single,
+                'game_id' => $game_id,
+            ]);
+          }
+        return view('client.Tennis-details', compact('response', 'game_single','game_id'));
     }
 
     public function tennis_bet_place(Request $request)
