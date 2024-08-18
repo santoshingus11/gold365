@@ -27,6 +27,66 @@
             animation: blink 1s infinite;
         }
     </style>
+     <style>
+    .scoreboard {
+      background-color: #004080;
+      /* Dark blue background */
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    .background {
+      background-image: url('{{url("/public/scorecard-bg.png")}}');
+      /* Replace with your background image URL */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    .match-info,
+    .score-info,
+    .target-info,
+    .commentary-info {
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Semi-transparent black */
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+    }
+
+    .badge-custom {
+      padding: 10px;
+      font-size: 1.2rem;
+    }
+
+    .badge-4 {
+      background-color: blue;
+    }
+
+    .badge-1 {
+      background-color: green;
+    }
+
+    .badge-0 {
+      background-color: grey;
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .commentary-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  </style>
     @include('layouts.client-head-style-url')
 </head>
 <?php $page = 'Home';
@@ -92,6 +152,32 @@
                                             <div class="markets"></div>
                                         </div>
                                     </div> -->
+                                    <?php if (!empty($game_single['channel_id'])) { ?>
+                      <div class="scoreboard">
+                        <div class="background">
+                          <div class="content">
+                            <h2><span> {{$game_single['game_title'] ?? ""}} </span><span>{{$game_single['datetimeGMT'] ?? ""}}
+                              </span>
+                            </h2>
+                          </div>
+                          <div class="commentary-info">
+                            <div>Target:</div>
+                            <div id="target">
+
+                            </div>
+                          </div>
+                          <div class="commentary-info">
+                            <div>Score board :</div>
+                            <div id="nowscore"></div>
+                          </div>
+                          <div class="commentary-info">
+                            <div>Ball By Ball Score : <span id="playing_team"></span></div>
+                            <div id="score_data"></div>
+                          </div>
+
+                        </div>
+                      </div>
+                    <?php } ?>
                                     <div>
                                         <div class="game-heading"><span class="card-header-title">{{$game_single['game_title']}}</span><span class="float-right"><span>{{date('d/m/Y H:i:s A',strtotime($game_single['created_at']))}}</span></span></div>
                                         <div class="sr-widget-1 scoreCard_game mt-1"></div>
@@ -967,6 +1053,51 @@
                     console.error('Error fetching cricket details:', error);
                 }
             });
+
+            $.ajax({
+          url: game_id, // Update with your actual route
+          method: 'GET',
+          success: function(data) {
+            console.log(data);
+           
+            var target = data.score.cricket_detail.target;
+            var teamNameA = data.score.cricket_detail.team_name_a;
+
+            var displayText = target === null || target === undefined ? 'Yet To Bat' : target;
+
+            var target = '';
+            target = `
+                <span class="badge badge-custom badge-0">${teamNameA} : ${displayText}</span>
+            `;
+
+            $('#target').html(target);
+
+            var nowscore = '';
+            nowscore = `
+              <span class="badge badge-custom badge-1"> Score </span>  <span class="badge badge-custom badge-0">${data.score.cricket_detail.play_score} / ${data.score.cricket_detail.play_wicket}</span> <span class="badge badge-custom badge-1"> Over Completed </span> <span class="badge badge-custom badge-0"> ${data.score.cricket_detail.play_over} </span>
+            `;
+
+            $('#nowscore').html(nowscore);
+
+            var score = '';
+            var playing_team = '';
+            $.each(data.score.cricket, function(index, r) {
+
+              score += `
+                    <span class="badge badge-custom badge-0">${r.score}</span>
+            `;
+              playing_team = `
+                    <span class="badge badge-custom badge-1">${r.team_name}</span>
+            `;
+            });
+            $('#score_data').html(score);
+            $('#playing_team').html(playing_team);
+
+          },
+          error: function(xhr, status, error) {
+            console.error('Error fetching cricket details:', error);
+          }
+        });
         }
 
         // Load cricket details every 5 seconds

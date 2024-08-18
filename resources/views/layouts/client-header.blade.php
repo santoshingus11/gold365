@@ -91,7 +91,7 @@
       <img src="{{asset('frontend/assets/images/logo-login.png')}}" />
     </div>
   </div>
-            
+
   <div class="main_menu">
 
     <nav class="navbar navbar-expand-lg bg-black ">
@@ -109,7 +109,7 @@
             <li class="nav-item dropdown caret">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Exposure 0
-                 @if(Auth::guard('client')->check()) {{Auth::guard('client')->user()->username }} @endif
+                @if(Auth::guard('client')->check()) {{Auth::guard('client')->user()->username }} @endif
               </a>
 
               <ul class="dropdown-menu menu_design_1">
@@ -117,6 +117,8 @@
                 <li><a class="dropdown-item" href="{{route('profit_loss')}}">Betting Profit and Loss</a></li>
                 <li><a class="dropdown-item" href="{{route('account_statement')}}">Account Statement</a></li>
                 <li><a class="dropdown-item" href="{{route('transferstatement')}}">Transfer Statement</a></li>
+                <li><a class="dropdown-item" href="{{route('withdraw.create')}}"> Withdraw </a></li>
+                <li><a class="dropdown-item" href="{{route('deposit.create')}}"> Deposit </a></li>
                 <li><a class="dropdown-item" href="{{route('changepassword')}}">Change Password</a></li>
                 <li><a class="dropdown-item" href="{{route('secureauth')}}">Secure Auth</a></li>
                 <li><a class="dropdown-item" href="{{route('message')}}">Message</a></li>
@@ -149,17 +151,19 @@
             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#RulesstaticBackdrop"> Rules</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#RulesstaticBackdrop" style="text-decoration: underline;">Balance  @if(Auth::guard('client')->check()) {{Auth::guard('client')->user()->balance }} @endif</a>
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#RulesstaticBackdrop" style="text-decoration: underline;">Balance @if(Auth::guard('client')->check()) {{Auth::guard('client')->user()->balance }} @endif</a>
             <span class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#RulesstaticBackdrop" style="text-decoration: underline;">Exposure 0</span>
           </li>
           <li class="nav-item dropdown caret">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-               @if(Auth::guard('client')->check()) {{Auth::guard('client')->user()->username }} @endif
+              @if(Auth::guard('client')->check()) {{Auth::guard('client')->user()->username }} @endif
             </a>
             <ul class="dropdown-menu menu_design_1">
               <li><a class="dropdown-item" href="{{route('my-bets')}}">My Bets</a></li>
               <li><a class="dropdown-item" href="{{route('profit_loss')}}">Betting Profit and Loss</a></li>
               <li><a class="dropdown-item" href="{{route('account_statement')}}">Account Statement</a></li>
+              <li><a class="dropdown-item" href="{{route('withdraw.create')}}"> Withdraw </a></li>
+              <li><a class="dropdown-item" href="{{route('deposit.create')}}"> Deposit </a></li>
               <!--<li><a class="dropdown-item" href="{{route('transferstatement')}}">Transfer Statement</a></li>-->
               <li><a class="dropdown-item" href="{{route('changepassword')}}">Change Password</a></li>
               <!--<li><a class="dropdown-item" href="{{route('secureauth')}}">Secure Auth</a></li>-->
@@ -221,7 +225,7 @@
           <li class="nav-item col-auto p-2"><a href="{{route('client.casino')}}" class="nav-link download-apk"> <span class="link-name">INT CASINO</span></a></li>
           <!--<li class="nav-item col-auto p-2"><a href="{{route('lottery-frontend')}}" class="nav-link"><span class="link-name">BINARY</span></a></li>-->
         </ul>
-      </div> 
+      </div>
     </div>
   </nav>
   </div>

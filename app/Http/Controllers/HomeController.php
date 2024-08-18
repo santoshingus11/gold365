@@ -252,9 +252,28 @@ class HomeController extends Controller
 
         curl_close($gm);
         if ($request->ajax()) {
+
+ //get Games list
+ $gm1 = curl_init();
+ // Disable SSL verification
+ curl_setopt($gm1, CURLOPT_SSL_VERIFYPEER, false);
+ // Will return the response, if false it print the response
+ curl_setopt($gm1, CURLOPT_RETURNTRANSFER, true);
+ // Set the url
+ $url1 = "https://ujala11games.com/api/game-score-list/" . $game_id;
+ curl_setopt($gm1, CURLOPT_URL, $url1);
+ // Execute
+ $res1 = curl_exec($gm1);
+ // Will dump a beauty json <3
+ $game_singlescore = json_decode($res1, true);
+
+ curl_close($gm1);
+
+
             return response()->json([
                 'response' => $response,
                 'game_single' => $game_single,
+                'score' => $game_singlescore,
                 'game_id' => $game_id,
             ]);
           }
@@ -384,9 +403,26 @@ class HomeController extends Controller
         $game_single = json_decode($res, true);
         curl_close($gm);
         if ($request->ajax()) {
+    //get Games list
+    $gm1 = curl_init();
+    // Disable SSL verification
+    curl_setopt($gm1, CURLOPT_SSL_VERIFYPEER, false);
+    // Will return the response, if false it print the response
+    curl_setopt($gm1, CURLOPT_RETURNTRANSFER, true);
+    // Set the url
+    $url1 = "https://ujala11games.com/api/game-score-list/" . $game_id;
+    curl_setopt($gm1, CURLOPT_URL, $url1);
+    // Execute
+    $res1 = curl_exec($gm1);
+    // Will dump a beauty json <3
+    $game_singlescore = json_decode($res1, true);
+
+    curl_close($gm1);
+
             return response()->json([
                 'response' => $response,
                 'game_single' => $game_single,
+                'score' => $game_singlescore,
                 'game_id' => $game_id,
             ]);
           }
@@ -484,12 +520,29 @@ class HomeController extends Controller
         $game_single = json_decode($res, true);
         curl_close($gm);
         if ($request->ajax()) {
+             //get Games list
+             $gm1 = curl_init();
+             // Disable SSL verification
+             curl_setopt($gm1, CURLOPT_SSL_VERIFYPEER, false);
+             // Will return the response, if false it print the response
+             curl_setopt($gm1, CURLOPT_RETURNTRANSFER, true);
+             // Set the url
+             $url1 = "https://ujala11games.com/api/game-score-list/" . $game_id;
+             curl_setopt($gm1, CURLOPT_URL, $url1);
+             // Execute
+             $res1 = curl_exec($gm1);
+             // Will dump a beauty json <3
+             $game_singlescore = json_decode($res1, true);
+ 
+             curl_close($gm1);
             return response()->json([
                 'response' => $response,
                 'game_single' => $game_single,
+                'score' => $game_singlescore,
                 'game_id' => $game_id,
             ]);
           }
+       
         return view('client.Tennis-details', compact('response', 'game_single','game_id'));
     }
 

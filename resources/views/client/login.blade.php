@@ -109,11 +109,11 @@ html, body {
 </head>
 
 <body>
-    <div class="fullpage-loader">
+    <!-- <div class="fullpage-loader">
         <div class="fullpage-loader__logo">
             <img src="{{ asset('frontend/assets/images/logo-login.png') }}" />
         </div>
-    </div>
+    </div> -->
 
     <section id="login" class="">
         <div class="container">
