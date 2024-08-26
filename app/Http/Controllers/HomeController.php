@@ -13,6 +13,8 @@ use App\Models\GreyhoundRacingPlaceBet;
 use App\Models\Admin;
 use App\Models\BetRecord;
 use App\Models\BankingHistory;
+use App\Models\Deposit;
+use App\Models\Withdraw;
 use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
@@ -780,12 +782,18 @@ class HomeController extends Controller
 
         return view('client.profitloss', compact('betRecords'));
     }
-
     public function statement()
     {
         $bankingHistories = BankingHistory::where('user_id', Auth::guard('client')->user()->id)->orderBy('banking_history_id', 'desc')->get();
-        return view('client.accountstatement', compact('bankingHistories'));
+        $deposits = Deposit::all();
+        $withdraw = Withdraw::all();
+        return view('client.accountstatement', get_defined_vars());
     }
+    // public function statement()
+    // {
+    //     $bankingHistories = BankingHistory::where('user_id', Auth::guard('client')->user()->id)->orderBy('banking_history_id', 'desc')->get();
+    //     return view('client.accountstatement', compact('bankingHistories'));
+    // }
 
     function changepassword()
     {
